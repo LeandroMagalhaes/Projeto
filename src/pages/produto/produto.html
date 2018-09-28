@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Cadastro de Produto</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Nome Produto</ion-label>
+      <ion-input type="text" value="Produto"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Valor</ion-label>
+      <ion-input type="text" value="Valor"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Descrição</ion-label>
+      <ion-input type="text" value="Descricao"></ion-input>
+    </ion-item>
+
+    <ion-fab right top>
+      <button ion-fab color="secondary"><ion-icon name="arrow-dropleft"></ion-icon></button>
+      <ion-fab-list side="left">
+        <button ion-fab (click)="itemTapped($event, item)">
+          <ion-icon name="camera"></ion-icon>
+        </button>
+      </ion-fab-list>
+    </ion-fab>
+
+  </ion-list>
+  <div *ngIf="selectedItem" padding>
+    <b>{{selectedItem.title}}</b>
+  </div>
+</ion-content>
