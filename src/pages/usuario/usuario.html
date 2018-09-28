@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Cadastro de Usuário</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <ion-label fixed>Nome</ion-label>
+      <ion-input type="text" placeholder="Nome Completo" value="Nome"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Senha</ion-label>
+      <ion-input type="password" placeholder="Senha" value="Senha"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Data de Nascimento</ion-label>
+      <ion-input type="date" value="dtNascimento"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Endereço</ion-label>
+      <ion-input type="text" placeholder="Endereço" value="Endereco"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Masculino</ion-label>
+      <ion-radio checked="true" value="M"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Feminino</ion-label>
+      <ion-radio value="F"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Deseja Receber Emails?</ion-label>
+        <ion-toggle color="energized" checked="false"></ion-toggle>
+      </ion-item>
+
+  </ion-list>
+
+  <div *ngIf="selectedItem" padding>
+    You navigated here from <b>{{selectedItem.title}}</b>
+  </div>
+
+  <!--<form (submit)="doSubmit($event)" [formGroup]="sexoForm">
+    <ion-list radio-group formControlName="sexo">
+  </form>
+-->
+</ion-content>
