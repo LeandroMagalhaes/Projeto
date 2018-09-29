@@ -11,17 +11,17 @@
   <ion-list>
     <ion-item>
       <ion-label floating>Nome Produto</ion-label>
-      <ion-input type="text" value="Produto"></ion-input>
+      <ion-input type="text"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Valor</ion-label>
-      <ion-input type="text" value="Valor"></ion-input>
+      <ion-input type="text"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Descrição</ion-label>
-      <ion-input type="text" value="Descricao"></ion-input>
+      <ion-input type="text"></ion-input>
     </ion-item>
 
     <ion-fab right top>
@@ -34,7 +34,7 @@
     </ion-fab>
 
   </ion-list>
-  <div *ngIf="selectedItem" padding>
-    <b>{{selectedItem.title}}</b>
+  <div *ngIf="itemTapped" padding>
+    <b>{{itemTapped.title}}</b>
   </div>
 </ion-content>

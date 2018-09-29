@@ -30,25 +30,23 @@
       <ion-input type="text" placeholder="Endereço"></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label>Masculino</ion-label>
-      <ion-radio checked="true" value="M"></ion-radio>
-    </ion-item>
+	<form (submit)="doSubmit($event)" [formGroup]="sexoForm">
+		<ion-list radio-group formControlName="sexo">	  
+			<ion-item>
+			  <ion-label>Masculino</ion-label>
+			  <ion-radio checked="true" value="M"></ion-radio>
+			</ion-item>
 
-    <ion-item>
-      <ion-label>Feminino</ion-label>
-      <ion-radio value="F"></ion-radio>
-    </ion-item>
-
+			<ion-item>
+			  <ion-label>Feminino</ion-label>
+			  <ion-radio value="F"></ion-radio>
+			</ion-item>
+		</ion-list>
+	</form>
+  
     <ion-item>
         <ion-label>Deseja Receber Emails?</ion-label>
         <ion-toggle color="energized" checked="false"></ion-toggle>
       </ion-item>
-
   </ion-list>
-
-  <!--<form (submit)="doSubmit($event)" [formGroup]="sexoForm">
-    <ion-list radio-group formControlName="sexo">
-  </form>
--->
 </ion-content>
