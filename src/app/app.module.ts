@@ -11,6 +11,7 @@ import { CameraPage } from '../pages/camera/camera';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Camera } from '@ionic-native/camera';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     UsuarioPage,
     ProdutoPage,
     AnuncioPage,
-	CameraPage
+	  CameraPage
   ],
   imports: [
     BrowserModule,
@@ -32,12 +33,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     UsuarioPage,
     ProdutoPage,
     AnuncioPage,
-	CameraPage
+	  CameraPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
+
   ]
 })
 export class AppModule {}

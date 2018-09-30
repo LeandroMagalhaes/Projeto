@@ -11,17 +11,30 @@
   <ion-list>
     <ion-item>
       <ion-label floating>Nome Produto</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" name="nomeProduto"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Categoria</ion-label>
+      <ion-select [(ngModel)]="Categoria" interface="action-sheet">
+        <ion-option value="emprego">Emprego</ion-option>
+        <ion-option value="imovel">Imóvel</ion-option>
+        <ion-option value="veiculo">Veículo</ion-option>
+        <ion-option value="eletronico">Eletrônico</ion-option>
+        <ion-option value="animal">Animal</ion-option>
+        <ion-option value="musica">Música</ion-option>
+        <ion-option value="esporte">Esporte</ion-option>
+      </ion-select>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Valor</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" name="valorProduto"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Descrição</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" name="descricaoProduto"></ion-input>
     </ion-item>
 
     <ion-fab right top>
@@ -32,8 +45,8 @@
         </button>
       </ion-fab-list>
     </ion-fab>
-
   </ion-list>
+
   <div *ngIf="itemTapped" padding>
     <b>{{itemTapped.title}}</b>
   </div>
