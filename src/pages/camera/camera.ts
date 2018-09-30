@@ -1,19 +1,17 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Camera, CameraOptions } from '@ionic-native/camera';
+//import { Camera } from '@angular/core';
 
 @Component({
   selector: 'page-camera',
   templateUrl: 'camera.html'
 })
 export class CameraPage {
-  img: ""
-  beer: ""
 
-  constructor(private camera: Camera, public navCtrl: NavController, public navParams: NavParams) {
+  constructor() {
 
   }
-
+/*
   getPhoto(){
     const options: CameraOptions = {
       quality: 100,
@@ -27,9 +25,5 @@ export class CameraPage {
     }, (err) => {
       console.log(err);
     });
-  }
-
-  itemTapped(event, item) {
-	  this.navCtrl.push(CameraPage);
-  }
+  }*/
 }

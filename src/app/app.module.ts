@@ -9,9 +9,19 @@ import { ProdutoPage } from '../pages/produto/produto';
 import { AnuncioPage } from '../pages/anuncio/anuncio';
 import { CameraPage } from '../pages/camera/camera';
 
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Camera } from '@ionic-native/camera';
+
+/* Categoria de Produtos
+import { EsportePage } from '../CatEsporte/esporte';
+import { EletronicoPage } from '../CatEletronico/eletronico';
+import { EmpregoPage } from '../CatEmprego/emprego';
+import { ImovelPage } from '../CatImoveis/imovel';
+import { MusicaPage } from '../CatMusica/musica';
+import { AnimalPage } from '../CatAnimal/animal';
+import { VeiculoPage } from '../CatVeiculo/veiculo';
+*/
 
 @NgModule({
   declarations: [
@@ -38,9 +48,7 @@ import { Camera } from '@ionic-native/camera';
   providers: [
     StatusBar,
     SplashScreen,
-    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
-
   ]
 })
 export class AppModule {}

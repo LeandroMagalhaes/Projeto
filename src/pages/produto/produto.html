@@ -7,7 +7,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
   <ion-list>
     <ion-item>
       <ion-label floating>Nome Produto</ion-label>
@@ -45,9 +45,9 @@
         </button>
       </ion-fab-list>
     </ion-fab>
+
+    <button ion-button secondary>Cadastrar</button>
+
   </ion-list>
 
-  <div *ngIf="itemTapped" padding>
-    <b>{{itemTapped.title}}</b>
-  </div>
 </ion-content>
