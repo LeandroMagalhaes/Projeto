@@ -3,6 +3,8 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { DatabaseProvider } from '../providers/database/database';
+
 import { HomePage } from '../pages/home/home';
 import { UsuarioPage } from '../pages/usuario/usuario';
 import { ProdutoPage } from '../pages/produto/produto';
@@ -14,21 +16,20 @@ import { AnuncioPage } from '../pages/anuncio/anuncio';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = null;
 
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
-    // used for an example of ngFor and navigation
+    // Menu em exibição na Tela
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Usuário', component: UsuarioPage },
       { title: 'Anúncio', component: AnuncioPage },
       { title: 'Produto', component: ProdutoPage }
     ];
-
   }
 
   initializeApp() {
@@ -37,7 +38,20 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      DatabaseProvider.createDB()
+        .then(() => {
+          this.abrirHomePage(this.splashScreen);
+        })
+        .catch(() => {
+          this.abrirHomePage(this.splashScreen);
+        })
     });
+  }
+
+  private abrirHomePage(splashScreen: SplashScreen) {
+    this.splashScreen.hide();
+    this.rootPage = HomePage;
   }
 
   openPage(page) {
