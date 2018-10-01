@@ -6,17 +6,13 @@ import { CameraPage } from '../camera/camera';
   selector: 'page-produto',
   templateUrl: 'produto.html'
 })
-export class ProdutoPage {  
+export class ProdutoPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    
-  }
-    itemTapped(event, item) {
-		this.navCtrl.push(CameraPage, {
-     
-        });
-    }
-      
-  
 
+  }
+
+  itemTapped(event, item) {
+    this.navCtrl.push(CameraPage);
+  }
 }

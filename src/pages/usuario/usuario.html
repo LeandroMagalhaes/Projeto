@@ -7,46 +7,54 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
   <ion-list>
 
     <ion-item>
       <ion-label floating>Nome</ion-label>
-      <ion-input type="text" placeholder="Nome Completo"></ion-input>
+      <ion-input type="text" name="nomeUsuario"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Senha</ion-label>
-      <ion-input type="password" placeholder="Senha"></ion-input>
+      <ion-input type="password" name="senhaUsuario"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label fixed>Data de Nascimento</ion-label>
-      <ion-input type="date"></ion-input>
+      <ion-input type="date" name="dataUsuario"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Endereço</ion-label>
-      <ion-input type="text" placeholder="Endereço"></ion-input>
+      <ion-input type="text" name="enderecoUsuario"></ion-input>
     </ion-item>
 
-	<form (submit)="doSubmit($event)" [formGroup]="sexoForm">
-		<ion-list radio-group formControlName="sexo">	  
-			<ion-item>
-			  <ion-label>Masculino</ion-label>
-			  <ion-radio checked="true" value="M"></ion-radio>
-			</ion-item>
+    <form (submit)="doSubmit($event)" [formGroup]="sexoForm">
+      <ion-list radio-group formControlName="sexo">
+        <ion-item>
+          <ion-label>Masculino</ion-label>
+          <ion-radio checked="true" value="M"></ion-radio>
+        </ion-item>
 
-			<ion-item>
-			  <ion-label>Feminino</ion-label>
-			  <ion-radio value="F"></ion-radio>
-			</ion-item>
-		</ion-list>
-	</form>
-  
+        <ion-item>
+          <ion-label>Feminino</ion-label>
+          <ion-radio value="F"></ion-radio>
+        </ion-item>
+      </ion-list>
+    </form>
+
     <ion-item>
-        <ion-label>Deseja Receber Emails?</ion-label>
-        <ion-toggle color="energized" checked="false"></ion-toggle>
-      </ion-item>
+      <ion-label>Deseja Receber Email?</ion-label>
+      <ion-toggle [(ngModel)]="email" (ionChange)="change()" color="energized" name="emailConfirma"></ion-toggle>
+    </ion-item>
+
+    <ion-item *ngIf="email">
+      <ion-label floating>Email</ion-label>
+      <ion-input type="email" name="emailUsuario"></ion-input>
+    </ion-item>
+
+    <button ion-button secondary>Cadastrar</button>
+
   </ion-list>
 </ion-content>
