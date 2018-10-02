@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { EsportePage } from '../CatEsporte/esporte';
-import { EletronicoPage } from '../CatEletronico/eletronico';
-import { EmpregoPage } from '../CatEmprego/emprego';
-import { ImovelPage } from '../CatImoveis/imovel';
-import { MusicaPage } from '../CatMusica/musica';
-import { AnimalPage } from '../CatAnimal/animal';
-import { VeiculoPage } from '../CatVeiculo/veiculo';
+import { EsportePage } from '../categoria/CatEsporte/esporte';
+import { EletronicoPage } from '../categoria/CatEletronico/eletronico';
+import { EmpregoPage } from '../categoria/CatEmprego/emprego';
+import { ImovelPage } from '../categoria/CatImovel/imovel';
+import { MusicaPage } from '../categoria/CatMusica/musica';
+import { AnimalPage } from '../categoria/CatAnimal/animal';
+import { VeiculoPage } from '../categoria/CatVeiculo/veiculo';
 
 @Component({
   selector: 'page-anuncio',
@@ -34,8 +34,47 @@ export class AnuncioPage {
   }
 
   itemTapped(event, item) {
-    this.navCtrl.push(AnuncioPage, {
-      item: item
-    });
+
+    switch(item.title){
+      case "Esportes": {
+        this.navCtrl.push(EsportePage);
+        break;
+      }
+
+      case "Veículos": {
+        this.navCtrl.push(VeiculoPage);
+        break;
+      }
+
+      case "Imóveis": {
+        this.navCtrl.push(ImovelPage);
+        break;
+      }
+
+      case "Animais": {
+        this.navCtrl.push(AnimalPage);
+        break;
+      }
+
+      case "Música": {
+        this.navCtrl.push(MusicaPage);
+        break;
+      }
+
+      case "Eletrônicos": {
+        this.navCtrl.push(EletronicoPage);
+        break;
+      }
+
+      case "Empregos": {
+        this.navCtrl.push(EmpregoPage);
+        break;
+      }
+
+      default: {
+        this.navCtrl.push(AnuncioPage);
+        break;
+      }
+    }
   }
 }
