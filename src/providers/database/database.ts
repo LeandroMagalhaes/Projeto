@@ -1,4 +1,4 @@
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+/*import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -55,3 +55,4 @@ export class DatabaseProvider {
       .catch(e => console.error('Erro ao consultar a quantidade de Categorias', e));
   }
 }
+*/

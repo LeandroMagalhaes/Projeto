@@ -11,7 +11,7 @@ import { CameraPage } from '../pages/camera/camera';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { SQLite } from '@ionic-native/sqlite'
+//import { SQLite } from '@ionic-native/sqlite'
 
 // Categoria dos Anúncios
 import { EsportePage } from '../pages/categoria/CatEsporte/esporte';
@@ -23,9 +23,9 @@ import { AnimalPage } from '../pages/categoria/CatAnimal/animal';
 import { VeiculoPage } from '../pages/categoria/CatVeiculo/veiculo';
 
 // Providers
-import { DatabaseProvider } from '../providers/database/database';
-import { ProdutoProvider } from '../providers/produto/produto';
-import { CategoriaProvider } from '../providers/categoria/categoria';
+//import { DatabaseProvider } from '../providers/database/database';
+//import { ProdutoProvider } from '../providers/produto/produto';
+//import { CategoriaProvider } from '../providers/categoria/categoria';
 
 @NgModule({
   declarations: [
@@ -68,10 +68,10 @@ import { CategoriaProvider } from '../providers/categoria/categoria';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {provide: LOCALE_ID, useValue: 'pt-BR'},
-    SQLite,
-    DatabaseProvider,
-    ProdutoProvider,
-    CategoriaProvider
+    //SQLite,
+    //DatabaseProvider,
+    //ProdutoProvider,
+    //CategoriaProvider
   ]
 })
 export class AppModule {}

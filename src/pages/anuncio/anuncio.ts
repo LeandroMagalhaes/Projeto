@@ -9,7 +9,6 @@ import { MusicaPage } from '../categoria/CatMusica/musica';
 import { AnimalPage } from '../categoria/CatAnimal/animal';
 import { VeiculoPage } from '../categoria/CatVeiculo/veiculo';
 
-
 @Component({
   selector: 'page-anuncio',
   templateUrl: 'anuncio.html'

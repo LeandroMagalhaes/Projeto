@@ -23,7 +23,7 @@ export class UsuarioPage {
   }
 
   doSubmit(event) {
-    console.log('Submitting form', this.sexoForm.value);
+    console.log(this.sexoForm.value);
     event.preventDefault();
   }
 }

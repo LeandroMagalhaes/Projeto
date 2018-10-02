@@ -3,7 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { DatabaseProvider } from '../providers/database/database';
+//import { DatabaseProvider } from '../providers/database/database';
 
 import { HomePage } from '../pages/home/home';
 import { UsuarioPage } from '../pages/usuario/usuario';
@@ -16,7 +16,7 @@ import { AnuncioPage } from '../pages/anuncio/anuncio';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = null;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -39,20 +39,20 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
-      DatabaseProvider.createDB()
+    /*  DatabaseProvider.createDB()
         .then(() => {
           this.abrirHomePage(this.splashScreen);
         })
         .catch(() => {
           this.abrirHomePage(this.splashScreen);
-        })
+        })*/
     });
   }
-
+/*
   private abrirHomePage(splashScreen: SplashScreen) {
     this.splashScreen.hide();
     this.rootPage = HomePage;
-  }
+  }*/
 
   openPage(page) {
     // Reset the content nav to have just this page
