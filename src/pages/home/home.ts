@@ -1,4 +1,3 @@
-import { AnuncioPage } from './../pesquisar/pesquisar';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
@@ -10,6 +9,7 @@ import { ImovelPage } from '../categoria/CatImovel/imovel';
 import { MusicaPage } from '../categoria/CatMusica/musica';
 import { AnimalPage } from '../categoria/CatAnimal/animal';
 import { VeiculoPage } from '../categoria/CatVeiculo/veiculo';
+import { AnuncioPage } from '../anuncio/anuncio';
 
 @Component({
   selector: 'page-home',
