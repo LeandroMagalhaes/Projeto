@@ -3,8 +3,6 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-//import { DatabaseProvider } from '../providers/database/database';
-
 import { HomePage } from '../pages/home/home';
 import { UsuarioPage } from '../pages/usuario/usuario';
 import { ProdutoPage } from '../pages/produto/produto';
@@ -34,29 +32,12 @@ export class MyApp {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-
-    /*  DatabaseProvider.createDB()
-        .then(() => {
-          this.abrirHomePage(this.splashScreen);
-        })
-        .catch(() => {
-          this.abrirHomePage(this.splashScreen);
-        })*/
     });
   }
-/*
-  private abrirHomePage(splashScreen: SplashScreen) {
-    this.splashScreen.hide();
-    this.rootPage = HomePage;
-  }*/
 
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
 }

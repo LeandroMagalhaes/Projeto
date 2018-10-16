@@ -16,7 +16,7 @@
 
     <ion-item>
       <ion-label floating>Categoria</ion-label>
-      <ion-select [(ngModel)]="Categoria" interface="action-sheet">
+      <ion-select interface="action-sheet">
         <ion-option value="emprego">Emprego</ion-option>
         <ion-option value="imovel">Imóvel</ion-option>
         <ion-option value="veiculo">Veículo</ion-option>
@@ -40,13 +40,14 @@
     <ion-fab right top>
       <button ion-fab color="secondary"><ion-icon name="arrow-dropleft"></ion-icon></button>
       <ion-fab-list side="left">
-        <button ion-fab (click)="itemTapped($event,item)">
+        <button ion-fab (click)="itemTapped($event)">
           <ion-icon name="camera"></ion-icon>
         </button>
       </ion-fab-list>
     </ion-fab>
 
-    <button ion-button secondary>Cadastrar</button>
+    <button ion-button color="secondary">Cadastrar</button>
+    <button ion-button color="primary" (click)="itemSelect($event)">Listar Produtos</button>
 
   </ion-list>
 

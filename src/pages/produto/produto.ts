@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { CameraPage } from '../camera/camera';
+import { PesquisaPage } from './../pesquisar/pesquisar';
 
 @Component({
   selector: 'page-produto',
@@ -12,7 +13,11 @@ export class ProdutoPage {
 
   }
 
-  itemTapped(event, item) {
+  itemTapped(event) {
     this.navCtrl.push(CameraPage);
+  }
+
+  itemSelect(event){
+    this.navCtrl.push(PesquisaPage);
   }
 }

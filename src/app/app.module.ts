@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule, LOCALE_ID } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -8,10 +9,10 @@ import { UsuarioPage } from '../pages/usuario/usuario';
 import { ProdutoPage } from '../pages/produto/produto';
 import { AnuncioPage } from '../pages/anuncio/anuncio';
 import { CameraPage } from '../pages/camera/camera';
+import { PesquisaPage } from '../pages/pesquisar/pesquisar'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-//import { SQLite } from '@ionic-native/sqlite'
 
 // Categoria dos Anúncios
 import { EsportePage } from '../pages/categoria/CatEsporte/esporte';
@@ -22,11 +23,6 @@ import { MusicaPage } from '../pages/categoria/CatMusica/musica';
 import { AnimalPage } from '../pages/categoria/CatAnimal/animal';
 import { VeiculoPage } from '../pages/categoria/CatVeiculo/veiculo';
 
-// Providers
-//import { DatabaseProvider } from '../providers/database/database';
-//import { ProdutoProvider } from '../providers/produto/produto';
-//import { CategoriaProvider } from '../providers/categoria/categoria';
-
 @NgModule({
   declarations: [
     MyApp,
@@ -35,17 +31,22 @@ import { VeiculoPage } from '../pages/categoria/CatVeiculo/veiculo';
     ProdutoPage,
     AnuncioPage,
     CameraPage,
+    PesquisaPage,
     EsportePage,
     EletronicoPage,
     EmpregoPage,
     ImovelPage,
     MusicaPage,
     AnimalPage,
-    VeiculoPage
+    VeiculoPage,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({
+      name: '__mydb',
+        driverOrder: ['indexeddb', 'sqlite', 'websql']
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -55,6 +56,7 @@ import { VeiculoPage } from '../pages/categoria/CatVeiculo/veiculo';
     ProdutoPage,
     AnuncioPage,
     CameraPage,
+    PesquisaPage,
     EsportePage,
     EletronicoPage,
     EmpregoPage,
@@ -67,11 +69,7 @@ import { VeiculoPage } from '../pages/categoria/CatVeiculo/veiculo';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    {provide: LOCALE_ID, useValue: 'pt-BR'},
-    //SQLite,
-    //DatabaseProvider,
-    //ProdutoProvider,
-    //CategoriaProvider
+    {provide: LOCALE_ID, useValue: 'pt-BR'}
   ]
 })
 export class AppModule {}
