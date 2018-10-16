@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
+
+import { ProdutoProvider, Produto } from '../../../providers/produto/produto';
 
 @Component({
   selector: 'page-animal',
@@ -9,29 +11,42 @@ export class AnimalPage {
   selectedItem: any;
   icons: string[];
   items: Array<{title: string, note: string, icon: string}>;
+  produtos: any[] = [];
+  somenteInativos: boolean = false;
+  procurar: string = null;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
+  constructor(public navCtrl: NavController, public navParams: NavParams, private toast: ToastController, private ProdutoProvider: ProdutoProvider) { }
 
-    // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
-
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+  ionViewDidEnter() {
+    this.getAllProdutos();
   }
 
-  itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
-    this.navCtrl.push(AnimalPage, {
-      item: item
-    });
+  getAllProdutos() {
+    this.ProdutoProvider.getAll(!this.somenteInativos, this.procurar)
+      .then((resultado: any[]) => {
+        this.produtos = resultado;
+      });
+  }
+
+  addProduto() {
+    this.navCtrl.push('ProdutoPage');
+  }
+
+  editProduto(id: number) {
+    this.navCtrl.push('ProdutoEditarPage', {id: id});
+  }
+
+  removeProduto(produto: Produto) {
+    this.ProdutoProvider.remove(produto.id)
+      .then(() => {
+
+        var index = this.produtos.indexOf(produto);
+        this.produtos.splice(index, 1);
+        this.toast.create({ message: 'Produto Excluído!', duration: 3000, position: 'botton'}).present();
+      })
+  }
+
+  filterProdutos(ev: any) {
+    this.getAllProdutos();
   }
 }

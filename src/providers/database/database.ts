@@ -1,5 +1,4 @@
-/*import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
-import { HttpClient } from '@angular/common/http';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -7,52 +6,51 @@ export class DatabaseProvider {
 
   constructor(private sqlite: SQLite) { }
 
-  public getDB(){
+  public getDB() {
     return this.sqlite.create({
-      name: 'db_xlx.db',
+      name: 'produto.db',
       location: 'default'
     });
   }
 
-  public createDB(){
+  public createDatabase() {
     return this.getDB()
       .then((db: SQLiteObject) => {
-        this.createTables(db);
-        this.insertDefaultItens(db);
-      })
-      .catch(e => console.error(e));
+
+      this.createTables(db);
+
+      this.insertDefaultItems(db);
+    }) .catch(e => console.log(e));
   }
 
   private createTables(db: SQLiteObject) {
+
     db.sqlBatch([
-      ['CREATE TABLE IS NOT EXISTS categoria (idCategoria integer primary key AUTOINCREMENT NOT NULL, nomeCategoria TEXT NOT NULL)'],
-      ['CREATE TABLE IS NOT EXISTS produto (idProduto integer primary key AUTOINCREMENT NOT NULL, nomeProduto TEXT, idUsuario interger, valorProduto REAL, ativo integer, idCategoria integer, FOREIGN KEY(idCategoria) REFERENCES categoria(idCategoria), FOREIGN KEY(idUsuario) REFERENCES usuario(idUsuario))'],
-      ['CREATE TABLE IS NOT EXISTS usuario (idUsuario integer primary key AUTOINCREMENT NOT NULL, nomeUsuario TEXT NOT NULL, senhaUsuario TEXT NOT NULL, dNascimento DATE, sexoUsuario TEXT, emailUsuario TEXT)'],
+      ['CREATE TABLE IF NOT EXISTS categorias (id integer primary key AUTOINCREMENT NOT NULL, nome TEXT)'],
+      ['CREATE TABLE IF NOT EXISTS produtos (id integer primary key AUTOINCREMENT NOT NULL, nome TEXT, valor REAL, descricao TEXT, ativo integer,  categoria_id integer, FOREIGN KEY (categoria_id) REFERENCES categorias(id))']
     ])
-      .then(() => console.log('Tabelas Criadas com Sucesso!'))
-      .catch(e => console.log('Erro ao Criar as Tabelas!', e));
+      .then(() => console.log('Dados padrões Criados!'))
+      .catch(e => console.error('Erro ao criar as Tabelas!', e));
   }
 
-  private insertDefaultItens(db: SQLiteObject) {
-    db.executeSql('SELECT COUNT(idCategoria) AS qtd FROM CATEGORIA', {})
+  private insertDefaultItems(db: SQLiteObject) {
+    db.executeSql('SELECT COUNT(id) AS qtd FROM categorias', [])
       .then((data: any) => {
-
-        if (data.rows.item(0).qtd == 0) {
+        if(data.rows.item(0).qtd == 0) {
 
           db.sqlBatch([
-            ['INSERT INTO categoria (nomeCategoria) VALUES (?)', ['Veículo']],
-            ['INSERT INTO categoria (nomeCategoria) VALUES (?)', ['Emprego']],
-            ['INSERT INTO categoria (nomeCategoria) VALUES (?)', ['Música']],
-            ['INSERT INTO categoria (nomeCategoria) VALUES (?)', ['Eletrônico']],
-            ['INSERT INTO categoria (nomeCategoria) VALUES (?)', ['Imóvel']],
-            ['INSERT INTO categoria (nomeCategoria) VALUES (?)', ['Animal']],
-            ['INSERT INTO categoria (nomeCategoria) VALUES (?)', ['Esporte']],
+            ['INSERT INTO categorias (nome) VALUES (?)', ['Imóvel']],
+            ['INSERT INTO categorias (nome) VALUES (?)', ['Animal']],
+            ['INSERT INTO categorias (nome) VALUES (?)', ['Emprego']],
+            ['INSERT INTO categorias (nome) VALUES (?)', ['Veículo']],
+            ['INSERT INTO categorias (nome) VALUES (?)', ['Música']],
+            ['INSERT INTO categorias (nome) VALUES (?)', ['Esporte']],
+            ['INSERT INTO categorias (nome) VALUES (?)', ['Eletrônico']],
           ])
-            .then(() => console.log('Dados Base Inseridos!'))
-            .catch(e => console.error('Erro ao inserir a Base', e));
+            .then(() => console.log('Dados padrões Inseridos!'))
+            .catch(e => console.error('Erro ao incluir dados padrões!', e));
         }
       })
-      .catch(e => console.error('Erro ao consultar a quantidade de Categorias', e));
+      .catch(e => console.error('Erro ao Consultar a Quantidade de Categorias!', e));
   }
 }
-*/
