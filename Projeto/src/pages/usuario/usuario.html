@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Cadastro de Usuário</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Nome</ion-label>
+      <ion-input type="text" name="nomeUsuario"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Senha</ion-label>
+      <ion-input type="password" name="senhaUsuario"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Data de Nascimento</ion-label>
+      <ion-input type="date" name="dataUsuario"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Endereço</ion-label>
+      <ion-input type="text" name="enderecoUsuario"></ion-input>
+    </ion-item>
+
+    <form (submit)="doSubmit($event)" [formGroup]="sexoForm">
+      <ion-list radio-group formControlName="sexo">
+        <ion-item>
+          <ion-radio checked="true" value="M"></ion-radio>
+          <ion-label>Masculino</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-radio value="F"></ion-radio>
+          <ion-label>Feminino</ion-label>
+        </ion-item>
+      </ion-list>
+    </form>
+
+    <ion-item>
+      <ion-label>Deseja Receber Email?</ion-label>
+      <ion-toggle [(ngModel)]="email" (ionChange)="change()" color="energized" name="emailConfirma"></ion-toggle>
+    </ion-item>
+
+    <ion-item *ngIf="email">
+      <ion-label floating>Email</ion-label>
+      <ion-input type="email" name="emailUsuario"></ion-input>
+    </ion-item>
+
+    <button ion-button secondary padding>Cadastrar</button>
+
+  </ion-list>
+</ion-content>
